@@ -1,0 +1,4 @@
+JemaBundle\Entity\Block:
+  blocks_{1..10}:
+    name: <word()>
+    description: <text(100,200)>

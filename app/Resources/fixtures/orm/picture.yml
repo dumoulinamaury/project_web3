@@ -1,0 +1,4 @@
+JemaBundle\Entity\Picture:
+  pictures_{1..10}:
+    url: <imageUrl()>
+    sequence: <numberBetween(1,5)>

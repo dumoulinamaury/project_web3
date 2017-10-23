@@ -1,0 +1,25 @@
+JemaBundle\Entity\User:
+  users_{1..10}:
+    userType: <randomElement(["S","P","A"])>
+    mail: <email()>
+    pass: thisIsPassWoooooord!!!
+    failedLogin: <numberBetween(0,3)>
+    activated: <boolean(90)>
+    banned: <boolean(5)>
+    pcId: 1221
+    municipalityId: 1221
+    localityId: 1221
+    street: <streetName()>
+    numberBox: <buildingNumber()>
+    register: <dateTimeBetween('-3years','now')>
+    name: <word()>
+    webSite: <domainName()>
+    mailContact: <email()>
+    phone: 0497844773
+    tva: BE1234567890
+    firstName: <firstName()>
+    lastName: <lastName()>
+    newsletter: <boolean(60)>
+    photoId: 1221
+    logoId: 1221
+    avatarId: 1221

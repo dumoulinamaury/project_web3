@@ -8,11 +8,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/addnews/")
+     * @Route("/")
      */
-    public function addNewsAction()
+    public function indexAction()
     {
-
         return $this->render('JemaBundle:Default:index.html.twig');
     }
 

@@ -1,0 +1,6 @@
+JemaBundle\Entity\ServiceCat:
+  categories_{1..10}:
+    name: <word()>
+    description: <text(300,500)>
+    inFront: <boolean(7)>
+    validated: <boolean(80)>

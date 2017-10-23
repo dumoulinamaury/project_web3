@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace JemaBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class JemaBundle extends Bundle
 {
 }

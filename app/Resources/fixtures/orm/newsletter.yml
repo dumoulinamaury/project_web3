@@ -1,0 +1,5 @@
+JemaBundle\Entity\Newsletter:
+  news_{1..10}:
+    title: <sentence(4)>
+    dAdded: <dateTimeBetween('-3years','now')>
+    url: <url()>
