@@ -1,4 +1,0 @@
-JemaBundle\Entity\PostalCode:
-  postalCodes_{1..10}:
-    pc: "1234"
-    #pc: <postcode(1)>

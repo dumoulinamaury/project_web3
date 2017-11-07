@@ -22,16 +22,14 @@ class BlockSurfer
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="blockId", type="integer")
+     * @ORM\ManyToOne(targetEntity="block")
+     * @ORM\JoinColumn(name="blockId", nullable=true)
      */
     private $blockId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="surferId", type="integer")
+     * @ORM\ManyToOne(targetEntity="surfer")
+     * @ORM\JoinColumn(name="surferId", nullable=true)
      */
     private $surferId;
 

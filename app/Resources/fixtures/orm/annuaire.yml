@@ -1,0 +1,158 @@
+#next steps:
+# table favoris en relation many to manys
+# corriger celui qui peut avoir plusieurs images
+# need personnal function?
+# answer questions
+# correct db schéma
+
+JemaBundle\Entity\Newsletter:
+  news_{1..10}:
+    title: <sentence(4)>
+    dAdded: <dateTimeBetween('-1years','now')>
+    url: <fr_BE:url()>
+
+JemaBundle\Entity\PostalCode:
+  postalCode_{1..20}:
+    pc (unique): <fr_BE:postcode(1)>
+    
+JemaBundle\Entity\Municipality:
+  municipality_{1..20}:
+    municipality (unique): <state()>  # It does not work for Belgium
+    
+JemaBundle\Entity\Locality:
+  locality_{1..20}:
+    locality (unique): <fr_BE:city()>
+    
+JemaBundle\Entity\Picture:
+    avatar_admin_{1..3}:
+      url: <imageUrl()>
+    avatar_provider_{1..10}:
+      url: <imageUrl()>
+    avatar_surfer_{1..30}:
+      url: <imageUrl()>
+    logo_provider_{1..10}:
+      url: <imageUrl()>
+    photo_serviceCat_{1..20}:
+      url: <imageUrl()>
+      sequence: <numberBetween(1,5)>
+
+JemaBundle\Entity\User:
+    admin_{1..3}:
+        name:               <fr_BE:firstName()>
+        mail (unique):      <fr_BE:email()>
+        pass:               <password()>
+        failedLogin:        "5%? <numberBetween(1,3)>"
+        activated:          <boolean(90)>
+        banned:             
+        pcId:               "@postalCode_*"
+        municipalityId:     "@municipality_*"
+        localityId:         "@locality_*"
+        street:             <fr_BE:streetName()>
+        numberBox:          <fr_BE:buildingNumber()>
+        register:           <dateTimeBetween('-3years','-2years')>
+        avatarId:           "@avatar_admin_<current()>"
+
+JemaBundle\Entity\Provider:
+    provider_{1..10}:
+        name:               <fr_BE:firstName()>
+        mail (unique):      <fr_BE:email()>
+        pass:               <password()>
+        failedLogin:        "5%? <numberBetween(1,3)>"
+        activated:          <boolean(90)>
+        banned:             "10%? 1"
+        pcId:               "@postalCode_*"
+        municipalityId:     "@municipality_*"
+        localityId:         "@locality_*"
+        street:             <fr_BE:streetName()>
+        numberBox:          <fr_BE:buildingNumber()>
+        register:           <dateTimeBetween('-2years','-2years')>
+        avatarId:           "@avatar_provider_<current()>"
+        trueName (unique):  <word()>
+        webSite (unique):   <fr_BE:domainName()>
+        mailContact:        <fr_BE:email()>
+        phone:              <fr_BE:phoneNumber()>
+        vat:                <fr_BE:vat()>
+        logoId:             "@logo_provider_<current()>"
+
+JemaBundle\Entity\Surfer:
+    surfer_{1..30}:
+        name:               <fr_BE:firstName()>
+        mail (unique):      <fr_BE:email()>
+        pass:               <password()>
+        failedLogin:        "5%? <numberBetween(1,3)>"
+        activated:          <boolean(90)>
+        banned:             "20%? 1"
+        pcId:               "@postalCode_*"
+        municipalityId:     "@municipality_*"
+        localityId:         "@locality_*"
+        street:             <fr_BE:streetName()>
+        numberBox:          <fr_BE:buildingNumber()>
+        register:           <dateTimeBetween('-3years','-2years')>
+        avatarId:           "@avatar_surfer_<current()>"
+        firstName:          <fr_BE:firstName()>
+        lastName:           <fr_BE:lastName()>
+        newsletter:         <boolean(60)>
+
+JemaBundle\Entity\Surfer:
+  favorite_{1..2}:
+        surferId:           "@surfer_*"
+        providerId:         "@provider_*"
+
+JemaBundle\Entity\ServiceCat:
+  category_{1..20}:
+    name (unique):          <word()>
+    description:            <text(300,500)>
+    inFront:                <boolean(7)>                    # ??? how just put exactly 1 category with true?
+    validated:              <boolean(80)>
+    picture:                "@photo_serviceCat_<current()>"
+
+JemaBundle\Entity\Promotion:
+    promotion_{1..15}:
+        providerId:         "@provider_*"
+        serviceCatId:       "@category_*"
+        name:               <sentence(1)>
+        description:        <text(100,300)>
+        url:                <fr_BE:url()>
+        start:              <dateTimeBetween('-1months','now')>
+        end:                <dateTimeBetween('now','2weeks')>
+        displayStart:       <dateTimeBetween('-2months','-1months')>
+        displayEnd:         <dateTimeBetween('2weeks','3weeks')>            # how enter here the content of "end" ??
+                                    # not working == <identity(date('now'))>                        # not working == <identity(new \DateTime({end}))>
+
+JemaBundle\Entity\Block:
+    block_{1..80}:
+        name:               <word()>
+        description:        <sentence()>
+
+JemaBundle\Entity\BlockSurfer:                      # ??? à relire, pas claire cette partie
+    blockSurfer_{1..40}:
+        blockId:            "@block_*"
+        surferId:           "@surfer_*"
+        sequence:           <numberBetween(1,4)>            # ??? how to have only 4 blocks maximum per user and only one time each number?
+
+JemaBundle\Entity\Comment:
+    comment_{1..20}:
+        surfer_id:          "@surfer_*"
+        providerId:         "@provider_*"
+        rating:             <numberBetween(1,5)>
+        title:              <sentence(1)>
+        content:            <text(50,200)>
+        dAdded:             <dateTimeBetween('-6months','now')>
+
+JemaBundle\Entity\Abuse:
+    abuse_{1..5}:
+        commentId:          "@comment_*"
+        surferId:           "@surfer_*"
+
+JemaBundle\Entity\Stage:
+    stage_{1..15}:
+        providerId:        "@provider_*"
+        name:               <sentence(1)>
+        description:        <text(50,200)>
+        price:              <randomFloat(2,1,100)>
+        otherInfo:          <text(100,200)>
+        start:              <dateTimeBetween('-1months','now')>
+        end:                <dateTimeBetween('now','2weeks')>
+        displayStart:       <dateTimeBetween('-2months','-1months')>
+        displayEnd:         <dateTimeBetween('2weeks','3weeks')>
+

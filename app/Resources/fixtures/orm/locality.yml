@@ -1,3 +1,0 @@
-JemaBundle\Entity\Locality:
-  localities_{1..10}:
-    locality: <city()>

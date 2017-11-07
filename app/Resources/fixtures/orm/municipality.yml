@@ -1,3 +1,0 @@
-JemaBundle\Entity\Municipality:
-  municipalities_{1..10}:
-    municipality: <state()>

@@ -32,6 +32,7 @@ class ServiceCat
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
+     *
      */
     private $description;
 

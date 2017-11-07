@@ -22,16 +22,14 @@ class Promotion
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="providerId", type="integer")
+     * @ORM\ManyToOne(targetEntity="provider")
+     * @ORM\JoinColumn(name="providerId", nullable=true)
      */
     private $providerId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="serviceCatId", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="serviceCat")
+     * @ORM\JoinColumn(name="serviceCatId", nullable=true)
      */
     private $serviceCatId;
 

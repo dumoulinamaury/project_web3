@@ -7,8 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="JemaBundle\Repository\UserRepository")
+ * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="userType", type="string")
+ * @ORM\DiscriminatorMap({"admin" = "User", "provider" = "Provider", "surfer" = "Surfer"})
  */
 class User
 {
@@ -24,21 +26,21 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="userType", type="string", length=1)
+     * @ORM\Column(name="name", type="string", length=64, unique=false)
      */
-    private $userType;
+    private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=255)
+     * @ORM\Column(name="mail", type="string", length=255, unique=true)
      */
     private $mail;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pass", type="string", length=255)
+     * @ORM\Column(name="pass", type="string", length=128)
      */
     private $pass;
 
@@ -64,23 +66,20 @@ class User
     private $banned;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="pcId", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="PostalCode")
+     * @ORM\JoinColumn(name="pcId", nullable=true)
      */
     private $pcId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="municipalityId", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Municipality")
+     * @ORM\JoinColumn(name="municipalityId", nullable=true)
      */
     private $municipalityId;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="localityId", type="string", length=64, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Locality")
+     * @ORM\JoinColumn(name="localityId", nullable=true)
      */
     private $localityId;
 
@@ -106,79 +105,8 @@ class User
     private $register;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=128, nullable=true)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="webSite", type="string", length=255, nullable=true)
-     */
-    private $webSite;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mailContact", type="string", length=255, nullable=true)
-     */
-    private $mailContact;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="phone", type="string", length=32, nullable=true)
-     */
-    private $phone;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tva", type="string", length=32, nullable=true)
-     */
-    private $tva;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="firstName", type="string", length=64, nullable=true)
-     */
-    private $firstName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lastName", type="string", length=64, nullable=true)
-     */
-    private $lastName;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="newsletter", type="boolean", nullable=true)
-     */
-    private $newsletter;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photoId", type="integer", nullable=true)
-     */
-    private $photoId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="logoId", type="integer", nullable=true)
-     */
-    private $logoId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="avatarId", type="integer", nullable=true)
+     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\JoinColumn(name="avatarId", nullable=true)
      */
     private $avatarId;
 
@@ -194,27 +122,27 @@ class User
     }
 
     /**
-     * Set userType
+     * Set name
      *
-     * @param string $userType
+     * @param string $name
      *
      * @return User
      */
-    public function setUserType($userType)
+    public function setName($name)
     {
-        $this->userType = $userType;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get userType
+     * Get name
      *
      * @return string
      */
-    public function getUserType()
+    public function getName()
     {
-        return $this->userType;
+        return $this->name;
     }
 
     /**
@@ -388,7 +316,7 @@ class User
     /**
      * Set localityId
      *
-     * @param string $localityId
+     * @param integer $localityId
      *
      * @return User
      */
@@ -402,7 +330,7 @@ class User
     /**
      * Get localityId
      *
-     * @return string
+     * @return int
      */
     public function getLocalityId()
     {
@@ -479,246 +407,6 @@ class User
     public function getRegister()
     {
         return $this->register;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return User
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set webSite
-     *
-     * @param string $webSite
-     *
-     * @return User
-     */
-    public function setWebSite($webSite)
-    {
-        $this->webSite = $webSite;
-
-        return $this;
-    }
-
-    /**
-     * Get webSite
-     *
-     * @return string
-     */
-    public function getWebSite()
-    {
-        return $this->webSite;
-    }
-
-    /**
-     * Set mailContact
-     *
-     * @param string $mailContact
-     *
-     * @return User
-     */
-    public function setMailContact($mailContact)
-    {
-        $this->mailContact = $mailContact;
-
-        return $this;
-    }
-
-    /**
-     * Get mailContact
-     *
-     * @return string
-     */
-    public function getMailContact()
-    {
-        return $this->mailContact;
-    }
-
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     *
-     * @return User
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * Set tva
-     *
-     * @param string $tva
-     *
-     * @return User
-     */
-    public function setTva($tva)
-    {
-        $this->tva = $tva;
-
-        return $this;
-    }
-
-    /**
-     * Get tva
-     *
-     * @return string
-     */
-    public function getTva()
-    {
-        return $this->tva;
-    }
-
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     *
-     * @return User
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    /**
-     * Get firstName
-     *
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * Set lastName
-     *
-     * @param string $lastName
-     *
-     * @return User
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * Get lastName
-     *
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * Set newsletter
-     *
-     * @param boolean $newsletter
-     *
-     * @return User
-     */
-    public function setNewsletter($newsletter)
-    {
-        $this->newsletter = $newsletter;
-
-        return $this;
-    }
-
-    /**
-     * Get newsletter
-     *
-     * @return bool
-     */
-    public function getNewsletter()
-    {
-        return $this->newsletter;
-    }
-
-    /**
-     * Set photoId
-     *
-     * @param string $photoId
-     *
-     * @return User
-     */
-    public function setPhotoId($photoId)
-    {
-        $this->photoId = $photoId;
-
-        return $this;
-    }
-
-    /**
-     * Get photoId
-     *
-     * @return string
-     */
-    public function getPhotoId()
-    {
-        return $this->photoId;
-    }
-
-    /**
-     * Set logoId
-     *
-     * @param integer $logoId
-     *
-     * @return User
-     */
-    public function setLogoId($logoId)
-    {
-        $this->logoId = $logoId;
-
-        return $this;
-    }
-
-    /**
-     * Get logoId
-     *
-     * @return int
-     */
-    public function getLogoId()
-    {
-        return $this->logoId;
     }
 
     /**

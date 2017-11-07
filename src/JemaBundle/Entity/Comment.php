@@ -22,16 +22,14 @@ class Comment
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="surferId", type="integer")
+     * @ORM\ManyToOne(targetEntity="surfer")
+     * @ORM\JoinColumn(name="surferId")
      */
     private $surferId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="providerId", type="integer")
+     * @ORM\ManyToOne(targetEntity="provider")
+     * @ORM\JoinColumn(name="providerId")
      */
     private $providerId;
 

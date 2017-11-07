@@ -22,16 +22,14 @@ class Abuse
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="commentId", type="integer")
+     * @ORM\ManyToOne(targetEntity="comment")
+     * @ORM\JoinColumn(name="commentId")
      */
     private $commentId;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="surferId", type="integer")
+     * @ORM\ManyToOne(targetEntity="surfer")
+     * @ORM\JoinColumn(name="surferId")
      */
     private $surferId;
 
