@@ -1,5 +1,4 @@
-jema:
+jema_bundle:
     resource: "@JemaBundle/Controller/"
     type:     annotation
     prefix:   /
-

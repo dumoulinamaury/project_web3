@@ -1,9 +1,12 @@
 #next steps:
-# table favoris en relation many to manys
-# corriger celui qui peut avoir plusieurs images
+# correct db schéma in MySql
+
+# skipped:
+# table favoris ind relation many to many => skipped
+
+# one is supposed to have several images?
 # need personnal function?
 # answer questions
-# correct db schéma
 
 JemaBundle\Entity\Newsletter:
   news_{1..10}:
@@ -17,7 +20,7 @@ JemaBundle\Entity\PostalCode:
     
 JemaBundle\Entity\Municipality:
   municipality_{1..20}:
-    municipality (unique): <state()>  # It does not work for Belgium
+    municipality (unique): <state()>  # Does not work for Belgium
     
 JemaBundle\Entity\Locality:
   locality_{1..20}:

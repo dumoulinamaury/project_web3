@@ -5,22 +5,16 @@ namespace JemaBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class DefaultController extends Controller
+class NavController extends Controller
 {
-    /**
-     * @Route("/")
-     */
-    public function indexAction()
+    public function _navAction()
     {
-        $albums = null;
-        return $this->render('index.html.twig', [
-            'albums' => $albums
+        $nav[] = ["name" => "index", "access" => "public", "pages" => [
+                        ["name" => "index", "access" => "public", "route" => "index"],
+                        ["name" => "page2", "access" => "public", "route" => "index"]
+                    ]];
+        return $this->render('nav.html.twig', [
+            'nav' => $nav
         ]);
-    }
-
-    public function navAction()
-    {
-        $menu = "test";
-        return $menu;
     }
 }
