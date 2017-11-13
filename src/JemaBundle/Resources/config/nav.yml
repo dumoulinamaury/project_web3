@@ -1,0 +1,24 @@
+-
+    name: index
+    access: public
+    pages:
+        -
+            name: index
+            access: public
+            route: index
+        -
+            name: page2
+            access: public
+            route: index
+-
+    name: contact
+    access: public
+    pages:
+        -
+            name: nous contacter
+            access: public
+            route: index
+        -
+            name: venir nous voir
+            access: public
+            route: index
