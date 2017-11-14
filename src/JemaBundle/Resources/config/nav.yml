@@ -1,5 +1,6 @@
 -
-    name: index
+    id: 1
+    name: Index
     access: public
     pages:
         -
@@ -9,16 +10,17 @@
         -
             name: page2
             access: public
-            route: index
+            route: page2
 -
-    name: contact
+    id: 2
+    name: Contact
     access: public
     pages:
         -
-            name: nous contacter
+            name: Contact us
             access: public
-            route: index
+            route: page3
         -
-            name: venir nous voir
+            name: Come see us
             access: public
-            route: index
+            route: page4
