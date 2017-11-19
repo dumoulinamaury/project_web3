@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+use JemaBundle\Entity\ServiceCat;
+
 class DefaultController extends Controller
 {
     /**
@@ -20,13 +22,20 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/page2/", name="page2")
+     * @Route("/removeacategory/{id}", name="page2")
      */
-    public function page2Action()
+    public function removeacategoryAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(ServiceCat::class);
+        $services = $repo->findAll();
+
+        $msg = "ServiceCat d'id"; // $services[0]['id']"
+
         $providers = null;
-        return $this->render('index.html.twig', [
-            'providers' => $providers
+        return $this->render('test.html.twig', [
+            'providers' => $providers,
+            'message' => $msg
         ]);
     }
     /**

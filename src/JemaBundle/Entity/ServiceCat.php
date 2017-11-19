@@ -51,7 +51,7 @@ class ServiceCat
     private $validated;
 
     /**
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"all"} )
      * @ORM\JoinColumn(name="photo_id")
      */
     private $picture;
