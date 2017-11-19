@@ -17,10 +17,26 @@
     access: public
     pages:
         -
-            name: Contact us
+            name: megamenu1
             access: public
-            route: page3
+            pages:
+                -
+                    name: Contact us
+                    access: public
+                    route: page3
+                -
+                    name: Come see us
+                    access: public
+                    route: page4
         -
-            name: Come see us
+            name: megamenu2
             access: public
-            route: page4
+            pages:
+                -
+                    name: Contact us
+                    access: public
+                    route: page3
+                -
+                    name: Come see us
+                    access: public
+                    route: page4
