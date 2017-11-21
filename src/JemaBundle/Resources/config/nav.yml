@@ -8,9 +8,9 @@
             access: public
             route: index
         -
-            name: page2
+            name: removeprovider
             access: public
-            route: page2
+            route: removeprovider
 -
     id: 2
     name: Contact

@@ -6,13 +6,24 @@
 		<div class="container">
 			<div class="content">
 				<div class="page-title center">
-					<h1>Title</h1>
+					<h1>Bienvenue sur l'annuaire bien-être de votre région</h1>
 				</div><!-- /.page-header -->
 				
 				{% for d in providers%}
 				<article>
 					<h2>{{ d.name }}</h2>
-					<p><a href="{{ path( 'jema_platform_view', {'id': d.id} ) }}" title="Page of the provider {{ d.id }}">More info...</a></p>
+						{{ dump(d) }}
+					<p><a href="{{ path( 'index' ) }}" title="Page of the provider {{ d.id }}">More info...</a></p>
+					<p><a href="{{ path( 'removeprovider', {'id': d.id} ) }}" title="Supprimer le provider d'id {{ d.id }}">Supprimer ce provider (id {{ d.id }}).</a></p>
+					{% if d.stages is not empty %}
+					<ul>
+					{% for stage in d.stages %}
+						<li>{{stage.name}} d'id {{stage.id}}</li>
+					{% endfor %}
+					</ul>
+					{% else %}
+					<p>Ce prestataire ne propose pas encore de stage.</p>
+					{% endif %}
 				</article>
 				{% else %}
 					<div><strong>Sorry :-(</strong> there is no provider at the moment.</div>

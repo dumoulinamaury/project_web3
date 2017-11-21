@@ -22,7 +22,7 @@ class Stage
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="provider")
+     * @ORM\ManyToOne(targetEntity="provider", inversedBy="stages")
      * @ORM\JoinColumn(name="providerId")
      */
     private $provider;

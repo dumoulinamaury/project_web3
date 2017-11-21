@@ -15,26 +15,32 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $providers = null;
+        $rep = $this->getDoctrine()->getManager()->getRepository('JemaBundle:Provider');
+        $providers = $rep->findAll();
+        // $stages = $providers[0]->getStages();
         return $this->render('public\index.html.twig', [
             'providers' => $providers
         ]);
     }
 
     /**
-     * @Route("/removeacategory/{id}", name="page2")
+     * @Route("/removeprovider/{id}", name="removeprovider", defaults={"id": "0"})
      */
-    public function removeacategoryAction()
+    public function removeProviderAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository(ServiceCat::class);
-        $services = $repo->findAll();
+        $provider = $em->getRepository('JemaBundle:Provider')->find($id);
 
-        $msg = "ServiceCat d'id"; // $services[0]['id']"
+        if ($provider == null){
+            $msg = "Aucun provider n'existe avec cet id : ".$id;
+        }
+        else {
+            $em->remove($provider);
+            $em->flush();
+            $msg = "Provider d'id " . $id . " supprimé. Ainsi que toute ses relations (automatique).";
+        }
 
-        $providers = null;
-        return $this->render('test.html.twig', [
-            'providers' => $providers,
+        return $this->render('public\test.html.twig', [
             'message' => $msg
         ]);
     }

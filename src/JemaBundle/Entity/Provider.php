@@ -3,6 +3,7 @@
 namespace JemaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Provider
@@ -12,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Provider extends User
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
     /**
      * @var string
      *
@@ -61,16 +53,16 @@ class Provider extends User
      * @ORM\JoinColumn(name="logoId", nullable=true)
      */
     private $logo;
-    
+
     /**
-     * Get id
-     *
-     * @return int
+     * @ORM\OneToMany(targetEntity="Stage", mappedBy="provider", cascade={"all"})
      */
-    public function getId()
-    {
-        return $this->id;
+    private $stages;
+
+    public function __construct() {
+        $this->stages = new ArrayCollection();
     }
+
 
     /**
      * Set trueName
@@ -214,6 +206,16 @@ class Provider extends User
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * Get stages
+     *
+     * @return ArrayCollection
+     */
+    public function getStages()
+    {
+        return $this->stages;
     }
 }
 

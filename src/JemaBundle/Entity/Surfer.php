@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Surfer extends User
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @ORM\ManyToMany(targetEntity="Provider")
      * @ORM\JoinTable(name="favorites",
      *      joinColumns={@ORM\JoinColumn(name="surferId", referencedColumnName="id")},
@@ -54,16 +45,6 @@ class Surfer extends User
      * @ORM\Column(name="newsletter", type="boolean", nullable=true)
      */
     private $newsletter;
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set firstName
