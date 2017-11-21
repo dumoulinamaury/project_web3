@@ -69,19 +69,19 @@ class User
      * @ORM\ManyToOne(targetEntity="PostalCode")
      * @ORM\JoinColumn(name="pcId", nullable=true)
      */
-    private $pcId;
+    private $pc;
 
     /**
      * @ORM\ManyToOne(targetEntity="Municipality")
      * @ORM\JoinColumn(name="municipalityId", nullable=true)
      */
-    private $municipalityId;
+    private $municipality;
 
     /**
      * @ORM\ManyToOne(targetEntity="Locality")
      * @ORM\JoinColumn(name="localityId", nullable=true)
      */
-    private $localityId;
+    private $locality;
 
     /**
      * @var string
@@ -108,8 +108,7 @@ class User
      * @ORM\OneToOne(targetEntity="Picture")
      * @ORM\JoinColumn(name="avatarId", nullable=true)
      */
-    private $avatarId;
-
+    private $avatar;
 
     /**
      * Get id
@@ -266,75 +265,75 @@ class User
     }
 
     /**
-     * Set pcId
+     * Set pc
      *
-     * @param integer $pcId
+     * @param integer $pc
      *
      * @return User
      */
-    public function setPcId($pcId)
+    public function setPc($pc)
     {
-        $this->pcId = $pcId;
+        $this->pc = $pc;
 
         return $this;
     }
 
     /**
-     * Get pcId
+     * Get pc
      *
      * @return int
      */
-    public function getPcId()
+    public function getPc()
     {
-        return $this->pcId;
+        return $this->pc;
     }
 
     /**
-     * Set municipalityId
+     * Set municipality
      *
-     * @param integer $municipalityId
+     * @param integer $municipality
      *
      * @return User
      */
-    public function setMunicipalityId($municipalityId)
+    public function setMunicipality($municipality)
     {
-        $this->municipalityId = $municipalityId;
+        $this->municipality = $municipality;
 
         return $this;
     }
 
     /**
-     * Get municipalityId
+     * Get municipality
      *
      * @return int
      */
-    public function getMunicipalityId()
+    public function getMunicipality()
     {
-        return $this->municipalityId;
+        return $this->municipality;
     }
 
     /**
-     * Set localityId
+     * Set locality
      *
-     * @param integer $localityId
+     * @param integer $locality
      *
      * @return User
      */
-    public function setLocalityId($localityId)
+    public function setLocality($locality)
     {
-        $this->localityId = $localityId;
+        $this->locality = $locality;
 
         return $this;
     }
 
     /**
-     * Get localityId
+     * Get locality
      *
      * @return int
      */
-    public function getLocalityId()
+    public function getLocality()
     {
-        return $this->localityId;
+        return $this->locality;
     }
 
     /**
@@ -410,27 +409,27 @@ class User
     }
 
     /**
-     * Set avatarId
+     * Set avatar
      *
-     * @param integer $avatarId
+     * @param integer $avatar
      *
      * @return User
      */
-    public function setAvatarId($avatarId)
+    public function setAvatar($avatar)
     {
-        $this->avatarId = $avatarId;
+        $this->avatar = $avatar;
 
         return $this;
     }
 
     /**
-     * Get avatarId
+     * Get avatar
      *
      * @return int
      */
-    public function getAvatarId()
+    public function getAvatar()
     {
-        return $this->avatarId;
+        return $this->avatar;
     }
 }
 

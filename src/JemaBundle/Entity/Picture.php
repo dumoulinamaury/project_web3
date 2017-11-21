@@ -35,7 +35,6 @@ class Picture
      */
     private $sequence;
 
-
     /**
      * Get id
      *

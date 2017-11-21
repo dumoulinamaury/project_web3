@@ -22,10 +22,10 @@ class Stage
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="user")
+     * @ORM\ManyToOne(targetEntity="provider")
      * @ORM\JoinColumn(name="providerId")
      */
-    private $providerId;
+    private $provider;
 
     /**
      * @var string
@@ -95,27 +95,27 @@ class Stage
     }
 
     /**
-     * Set providerId
+     * Set provider
      *
-     * @param integer $providerId
+     * @param integer $provider
      *
      * @return Stage
      */
-    public function setProviderId($providerId)
+    public function setProvider($provider)
     {
-        $this->providerId = $providerId;
+        $this->provider = $provider;
 
         return $this;
     }
 
     /**
-     * Get providerId
+     * Get provider
      *
      * @return int
      */
-    public function getProviderId()
+    public function getProvider()
     {
-        return $this->providerId;
+        return $this->provider;
     }
 
     /**

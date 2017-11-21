@@ -52,7 +52,7 @@ class ServiceCat
 
     /**
      * @ORM\OneToOne(targetEntity="Picture", cascade={"all"} )
-     * @ORM\JoinColumn(name="photo_id")
+     * @ORM\JoinColumn(name="photoId")
      */
     private $picture;
 

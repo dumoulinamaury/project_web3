@@ -25,13 +25,13 @@ class BlockSurfer
      * @ORM\ManyToOne(targetEntity="block")
      * @ORM\JoinColumn(name="blockId", nullable=true)
      */
-    private $blockId;
+    private $block;
 
     /**
      * @ORM\ManyToOne(targetEntity="surfer")
      * @ORM\JoinColumn(name="surferId", nullable=true)
      */
-    private $surferId;
+    private $surfer;
 
     /**
      * @var int
@@ -52,51 +52,51 @@ class BlockSurfer
     }
 
     /**
-     * Set blockId
+     * Set block
      *
-     * @param integer $blockId
+     * @param integer $block
      *
      * @return BlockSurfer
      */
-    public function setBlockId($blockId)
+    public function setBlock($block)
     {
-        $this->blockId = $blockId;
+        $this->block = $block;
 
         return $this;
     }
 
     /**
-     * Get blockId
+     * Get block
      *
      * @return int
      */
-    public function getBlockId()
+    public function getBlock()
     {
-        return $this->blockId;
+        return $this->block;
     }
 
     /**
-     * Set surferId
+     * Set surfer
      *
-     * @param integer $surferId
+     * @param integer $surfer
      *
      * @return BlockSurfer
      */
-    public function setSurferId($surferId)
+    public function setSurfer($surfer)
     {
-        $this->surferId = $surferId;
+        $this->surfer = $surfer;
 
         return $this;
     }
 
     /**
-     * Get surferId
+     * Get surfer
      *
      * @return int
      */
-    public function getSurferId()
+    public function getSurfer()
     {
-        return $this->surferId;
+        return $this->surfer;
     }
 
     /**

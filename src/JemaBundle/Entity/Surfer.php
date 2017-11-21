@@ -55,7 +55,6 @@ class Surfer extends User
      */
     private $newsletter;
 
-
     /**
      * Get id
      *

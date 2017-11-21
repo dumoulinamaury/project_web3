@@ -10,33 +10,16 @@
 {% endblock %}
 
 {% block body %}
-	{{ include('header.html.twig') }}
-
-	{% block content %}
-    <main class="main">
-        <div class="main-inner">
-            <div class="container">
-                <div class="content">
-                    <div class="page-title center">
-						<h1>Title</h1>
-					</div><!-- /.page-header -->
-					
-					{% for d in providers%}
-					<article>
-						<h2>{{ d.name }}</h2>
-						<p><a href="{{ path( 'jema_platform_view', {'id': d.id} ) }}" title="Page of the provider {{ d.id }}">More info...</a></p>
-					</article>
-					{% else %}
-						<div><strong>Sorry :-(</strong> there is no provider at the moment.</div>
-					{% endfor %}
-					
-                </div><!-- /.content -->
-            </div><!-- /.container -->
-        </div><!-- /.main-inner -->
-    </main><!-- /.main -->
+	{% block header %}
+		{{ include('public/include/header.html.twig') }}
 	{% endblock %}
 
-	{{include('footer.html.twig') }}
+	{% block content %}
+	{% endblock %}
+
+	{% block footer %}
+		{{include('public/include/footer.html.twig') }}
+	{% endblock %}
 {% endblock %}
 
 	{% block javascripts %}

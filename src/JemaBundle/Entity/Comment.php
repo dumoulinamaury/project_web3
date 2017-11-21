@@ -25,13 +25,13 @@ class Comment
      * @ORM\ManyToOne(targetEntity="surfer")
      * @ORM\JoinColumn(name="surferId")
      */
-    private $surferId;
+    private $surfer;
 
     /**
      * @ORM\ManyToOne(targetEntity="provider")
      * @ORM\JoinColumn(name="providerId")
      */
-    private $providerId;
+    private $provider;
 
     /**
      * @var int
@@ -73,51 +73,51 @@ class Comment
     }
 
     /**
-     * Set surferId
+     * Set surfer
      *
-     * @param integer $surferId
+     * @param integer $surfer
      *
      * @return Comment
      */
-    public function setSurferId($surferId)
+    public function setSurfer($surfer)
     {
-        $this->surferId = $surferId;
+        $this->surfer = $surfer;
 
         return $this;
     }
 
     /**
-     * Get surferId
+     * Get surfer
      *
      * @return int
      */
-    public function getSurferId()
+    public function getSurfer()
     {
-        return $this->surferId;
+        return $this->surfer;
     }
 
     /**
-     * Set providerId
+     * Set provider
      *
-     * @param integer $providerId
+     * @param integer $provider
      *
      * @return Comment
      */
-    public function setProviderId($providerId)
+    public function setProvider($provider)
     {
-        $this->providerId = $providerId;
+        $this->provider = $provider;
 
         return $this;
     }
 
     /**
-     * Get providerId
+     * Get provider
      *
      * @return int
      */
-    public function getProviderId()
+    public function getProvider()
     {
-        return $this->providerId;
+        return $this->provider;
     }
 
     /**

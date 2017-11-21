@@ -16,7 +16,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $providers = null;
-        return $this->render('index.html.twig', [
+        return $this->render('public\index.html.twig', [
             'providers' => $providers
         ]);
     }

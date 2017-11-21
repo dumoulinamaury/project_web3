@@ -24,14 +24,15 @@ class Promotion
     /**
      * @ORM\ManyToOne(targetEntity="provider")
      * @ORM\JoinColumn(name="providerId", nullable=true)
+     *
      */
-    private $providerId;
+    private $provider;
 
     /**
      * @ORM\ManyToOne(targetEntity="serviceCat")
      * @ORM\JoinColumn(name="serviceCatId", nullable=true)
      */
-    private $serviceCatId;
+    private $serviceCat;
 
     /**
      * @var string
@@ -94,51 +95,51 @@ class Promotion
     }
 
     /**
-     * Set providerId
+     * Set provider
      *
-     * @param integer $providerId
+     * @param integer $provider
      *
      * @return Promotion
      */
-    public function setProviderId($providerId)
+    public function setProvider($provider)
     {
-        $this->providerId = $providerId;
+        $this->provider = $provider;
 
         return $this;
     }
 
     /**
-     * Get providerId
+     * Get provider
      *
      * @return int
      */
-    public function getProviderId()
+    public function getProvider()
     {
-        return $this->providerId;
+        return $this->provider;
     }
 
     /**
-     * Set serviceCatId
+     * Set serviceCat
      *
-     * @param integer $serviceCatId
+     * @param integer $serviceCat
      *
      * @return Promotion
      */
-    public function setServiceCatId($serviceCatId)
+    public function setServiceCat($serviceCat)
     {
-        $this->serviceCatId = $serviceCatId;
+        $this->serviceCat = $serviceCat;
 
         return $this;
     }
 
     /**
-     * Get serviceCatId
+     * Get serviceCat
      *
      * @return int
      */
-    public function getServiceCatId()
+    public function getServiceCat()
     {
-        return $this->serviceCatId;
+        return $this->serviceCat;
     }
 
     /**

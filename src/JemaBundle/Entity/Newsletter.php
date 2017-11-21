@@ -42,7 +42,6 @@ class Newsletter
      */
     private $url;
 
-
     /**
      * Get id
      *
@@ -87,7 +86,6 @@ class Newsletter
     public function setDAdded($dAdded)
     {
         $this->dAdded = $dAdded;
-
         return $this;
     }
 
@@ -111,7 +109,6 @@ class Newsletter
     public function setUrl($url)
     {
         $this->url = $url;
-
         return $this;
     }
 

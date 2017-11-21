@@ -28,7 +28,6 @@ class PostalCode
      */
     private $pc;
 
-
     /**
      * Get id
      *

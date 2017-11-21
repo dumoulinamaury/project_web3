@@ -60,9 +60,8 @@ class Provider extends User
      * @ORM\OneToOne(targetEntity="Picture")
      * @ORM\JoinColumn(name="logoId", nullable=true)
      */
-    private $logoId;
-
-
+    private $logo;
+    
     /**
      * Get id
      *
@@ -194,27 +193,27 @@ class Provider extends User
     }
 
     /**
-     * Set logoId
+     * Set logo
      *
-     * @param integer $logoId
+     * @param integer $logo
      *
      * @return Surfer
      */
-    public function setLogoId($logoId)
+    public function setLogo($logo)
     {
-        $this->logoId = $logoId;
+        $this->logo = $logo;
 
         return $this;
     }
 
     /**
-     * Get logoId
+     * Get logo
      *
      * @return int
      */
-    public function getLogoId()
+    public function getLogo()
     {
-        return $this->logoId;
+        return $this->logo;
     }
 }
 

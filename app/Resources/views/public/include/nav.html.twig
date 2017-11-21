@@ -6,7 +6,7 @@
 									{% set class1 = '' %}
 									{% if d['pages'][0]['pages'] is defined %} {% set class1 = 'has-mega-menu ' %} {% endif %}
 									{% set class2 = '' %}
-									{% if idActive == d['id'] %} {% set class2 = ' active' %} {% endif %} 
+									{% if idActive == d['id'] %} {% set class2 = 'active' %} {% endif %} 
 								<li {% if (class1 or class2) is not empty %}class="{{class1}}{{class2}}"{% endif %}>
 									<a href="#">{{ d['name'] }} <i class="fa fa-chevron-down"></i></a>
 										

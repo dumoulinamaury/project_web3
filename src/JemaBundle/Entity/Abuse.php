@@ -25,13 +25,13 @@ class Abuse
      * @ORM\ManyToOne(targetEntity="comment")
      * @ORM\JoinColumn(name="commentId")
      */
-    private $commentId;
+    private $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity="surfer")
      * @ORM\JoinColumn(name="surferId")
      */
-    private $surferId;
+    private $surfer;
 
     /**
      * @var string
@@ -47,7 +47,6 @@ class Abuse
      */
     private $dAdded;
 
-
     /**
      * Get id
      *
@@ -59,51 +58,51 @@ class Abuse
     }
 
     /**
-     * Set commentId
+     * Set comment
      *
-     * @param integer $commentId
+     * @param integer $comment
      *
      * @return Abuse
      */
-    public function setCommentId($commentId)
+    public function setComment($comment)
     {
-        $this->commentId = $commentId;
+        $this->comment = $comment;
 
         return $this;
     }
 
     /**
-     * Get commentId
+     * Get comment
      *
      * @return int
      */
-    public function getCommentId()
+    public function getComment()
     {
-        return $this->commentId;
+        return $this->comment;
     }
 
     /**
-     * Set surferId
+     * Set surfer
      *
-     * @param integer $surferId
+     * @param integer $surfer
      *
      * @return Abuse
      */
-    public function setSurferId($surferId)
+    public function setSurfer($surfer)
     {
-        $this->surferId = $surferId;
+        $this->surfer = $surfer;
 
         return $this;
     }
 
     /**
-     * Get surferId
+     * Get surfer
      *
      * @return int
      */
-    public function getSurferId()
+    public function getSurfer()
     {
-        return $this->surferId;
+        return $this->surfer;
     }
 
     /**
